@@ -1,10 +1,29 @@
-<h1>My tasks</h1>
 
-<ol>
-  <% @tasks.each do |task| %>
-    <li> <%= link_to task.title, task_path(task) %> <p> <%= link_to "Delete", task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %> </p></li>
+<div class="container">
+  <h1>My tasks</h1>
 
+  <div id="task-container">
+    <% @tasks.each do |task| %>
+      <div id="task">
+        <% if task.completed %>
+          <p> <i class="fa-solid fa-square-check"></i> </p>
+        <% elsif %>
+          <p> <i class="fa-regular fa-square"></i> </p>
+        <% end %>
+
+        <p> <%= link_to task.title, task_path(task), class: "link" %> </p>
+
+        <p> <%= link_to task_path(task), class: "link", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+        <%#= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to tasks_new_path, class: "link" do %>
+    <i class="fa-solid fa-circle-plus"></i><span> Add a new task</span>
   <% end %>
-</ol>
 
-<%= link_to "Add a new task", tasks_new_path %>
+</div>

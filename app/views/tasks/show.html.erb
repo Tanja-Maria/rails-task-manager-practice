@@ -1,8 +1,17 @@
-<h1> <%= @task.title %> </h1>
+<div class="container">
+  <div id="task-header">
+    <h1> <%= @task.title %> </h1>
+    <div id="edit-icon">
+      <%= link_to tasks_edit_path(@task), class: "link" do %>
+        <i class="fa-solid fa-pencil icon-spacing"></i><span>Edit this task</span>
+      <% end %>
+    </div>
+  </div>
 
-<p> <%= @task.details %> </p>
+  <div id = "task-details"> <%= @task.details %> </div>
 
-<%= link_to "Edit", tasks_edit_path(@task) %>
+  <%= link_to tasks_path, class: "link" do %>
+    <i class="fa-solid fa-arrow-rotate-left"></i><span> Go back</span>
+  <% end %>
 
-
-<%= link_to "Go back", tasks_path %>
+</div>

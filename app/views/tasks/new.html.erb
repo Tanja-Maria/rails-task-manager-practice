@@ -1,15 +1,14 @@
+<div class="container">
+
 <h1>New task</h1>
 
-<%= form_with(model: @task, local: true) do |f| %>
+<div id="form-container">
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= render "form", task:@task %>
+</div>
 
-  <%= f.label :details %>
-  <%= f.text_field :details %>
-
-
-  <%= f.submit %>
+<%= link_to tasks_path, class: "link" do %>
+  <i class="fa-solid fa-arrow-rotate-left"></i><span> Go back</span>
 <% end %>
 
-<%= link_to "Back to list", tasks_path %>
+</div>
